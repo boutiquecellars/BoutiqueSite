@@ -1,0 +1,18 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 04/08/2017, 09:38:44
+    Author     : belchiorpalma
+*/
+#map {
+        height: 475px; 
+       width: 1173px !important;
+        background-color:orange;
+        background-image:url(../img/map.png)
+      }
+a.product-link{
+    color:white;
+}
