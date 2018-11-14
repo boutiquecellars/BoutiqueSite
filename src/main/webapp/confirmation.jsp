@@ -8,7 +8,7 @@
 <html>
 
 <head>
-    <title>Checkout</title>
+    <title>Confirmation</title>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
     <meta name="keywords" content="Template, html, premium, themeforest" />
@@ -97,19 +97,35 @@
             t = (Transaction) session.getAttribute("transaction");
             if(t!=null){
                 orderId = t.getTransactionOrder();
+                order = t.getSalesOrder();
+                
                 transactionStatus = t.getTransactionOrderStatus();
             }
-            order = (Order) session.getAttribute("order");
+            
             
             
         }
         %>
         <div class="container" id="container">
             <header class="page-header">
-                <h1 class="page-title">Checkout Order <%=orderId%> - <%=order.getOrderId() %></h1>
+                <h1 class="page-title">Confirmation Order <%=orderId%></h1>
             </header>
-            <p class="checkout-login-text">Sign in or Register to faster order checkout. 
-                <span class="small"><br/>ALL TRANSACTIONS ARE PROCESSED IN AUSTRALIAN DOLLARS</span>
+            <p class="checkout-login-text">
+                <%
+                if(t!=null && t.getTransactionOrderStatus()==1 ){
+                    out.print("Transaction Status: Success!<br/>");
+                    if(t.getTransactionOptions()!=null){
+                    out.print("<br/>"+t.getTransactionOptions());
+                    }
+                }else{
+                    if(t!=null && t.getCustomerNote()!=null){
+                        out.print("Error:"+t.getCustomerNote());
+                    }else{
+                        out.print("Error ocurred.");
+                    }
+                }
+                %>
+                <span class="small"><br/><br/>ALL TRANSACTIONS ARE PROCESSED IN AUSTRALIAN DOLLARS</span>
             </p>
             
             <div class="row row-col-gap" data-gutter="60">
@@ -131,6 +147,7 @@
                                 %>
                             <input type="hidden" id="order" name="order" value="<%=order.getOrderId()%>"/>
                                 <%
+                                    
                                 List<OrderItem> itens = order.getItems();
                                 if(itens!=null && itens.size()>0){
                                     for(OrderItem i:itens){
@@ -293,8 +310,9 @@
                     !-->
                 </div>
                 <div class="col-md-4">
-                    <h3 class="widget-title">Payment</h3>
                     <!--
+                    <h3 class="widget-title">Payment</h3>
+                    
                     <div class="cc-form">
                         <div class="clearfix">
                             <div class="form-group form-group-cc-number">

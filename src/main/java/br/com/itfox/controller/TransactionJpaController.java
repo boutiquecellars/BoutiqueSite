@@ -38,7 +38,9 @@ public class TransactionJpaController implements Serializable {
             em.getTransaction().begin();
             em.persist(transaction);
             em.getTransaction().commit();
-        } finally {
+        }catch(Exception ex){
+            System.err.println("Erro ao persistir a transacao:"+ex.getMessage());
+        }finally {
             if (em != null) {
                 em.close();
             }

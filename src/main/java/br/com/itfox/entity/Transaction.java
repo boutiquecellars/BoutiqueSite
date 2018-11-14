@@ -5,6 +5,7 @@
  */
 package br.com.itfox.entity;
 
+import br.com.itfox.beans.Order;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -248,7 +249,7 @@ public class Transaction implements Serializable {
     @Column(name = "transaction_order_status")
     private Integer transactionOrderStatus;
     @Transient 
-    private SalesOrder salesOrder;
+    private Order salesOrder;
 
     public Transaction() {
     }
@@ -689,11 +690,11 @@ public class Transaction implements Serializable {
         this.transactionOrderStatus = transactionOrderStatus;
     }
 
-    public SalesOrder getSalesOrder() {
+    public Order getSalesOrder() {
         return salesOrder;
     }
 
-    public void setSalesOrder(SalesOrder salesOrder) {
+    public void setSalesOrder(Order salesOrder) {
         this.salesOrder = salesOrder;
     }
 

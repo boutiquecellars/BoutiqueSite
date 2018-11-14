@@ -5,6 +5,8 @@
  */
 package br.com.itfox.servlet;
 
+import br.com.itfox.beans.Order;
+import br.com.itfox.business.BusinessDelegate;
 import br.com.itfox.controller.SalesOrderJpaController;
 import br.com.itfox.controller.TransactionJpaController;
 import br.com.itfox.entity.SalesOrder;
@@ -42,6 +44,9 @@ public class Checkout extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            /**
+             http://www.boutiquecellars.com/Checkout?AccessCode=C3AB9k1xvdgkguwwtWJ1KjmvjTCaDD7Fd5gl9PV5a__k5DOf3-fI_yW0Ek7gHaYgloPW4X7PN4II96fQkARxlD_e6yRtH_HfgiHH9DLVE7T9d3k0gFCWRPgwxgjHC__VJuF7TiDdsWaX1XNBxspM16NcwDQ==
+             */
             // servlet for get information about order
             out.print(" checkout");
             try{
@@ -49,7 +54,8 @@ public class Checkout extends HttpServlet {
                 String password = "zm3dRlSA";
                 String rapidEndpoint = "Sandbox";
                 String accessCode="F9802Af1q9L9fW_O3D2mwdZpJ_4nfZPIhbGu14mVYHtBB4CIR9fWUduVAtO1Gv4vJFmwGflc_9-wHsgIwP4k_dlE1lHoVMPgVHJ34p7QXLy_sVAVEt7ASXz9uZwC18Q6baYdZcnSDhEmQlgDXlXZEhuKhnQ==";
-               // accessCode = (String) request.getParameter("AccessCode");
+                accessCode="C3AB9k1xvdgkguwwtWJ1KjmvjTCaDD7Fd5gl9PV5a__k5DOf3-fI_yW0Ek7gHaYgloPW4X7PN4II96fQkARxlD_e6yRtH_HfgiHH9DLVE7T9d3k0gFCWRPgwxgjHC__VJuF7TiDdsWaX1XNBxspM16NcwDQ==";
+                //accessCode = (String) request.getParameter("AccessCode");
                 HttpSession session = request.getSession(true);
                 String firstName="";
                 String lastName="";
@@ -65,14 +71,18 @@ public class Checkout extends HttpServlet {
                 String note="";
                 boolean status=false;
                 Transaction t = new Transaction();
-                SalesOrder salesOrder = new SalesOrder();
+                //SalesOrder salesOrder = new SalesOrder();
                 EntityManagerFactory emf = (EntityManagerFactory)getServletContext().getAttribute("emf");
                 TransactionJpaController transactionDAO = new TransactionJpaController(emf);
-                SalesOrderJpaController salesOrderDAO = new SalesOrderJpaController(emf);
+                //SalesOrderJpaController salesOrderDAO = new SalesOrderJpaController(emf);
+                Order order = new Order();
+                BusinessDelegate bd = new BusinessDelegate();
+               
+                if(emf==null){
+                    
+                }
                 
-                
-                
-                if(accessCode!=null){
+                if(accessCode!=null && emf!=null){
                 
                     RapidClient client = RapidSDK.newRapidClient(apiKey, password, rapidEndpoint);
 
@@ -111,14 +121,16 @@ public class Checkout extends HttpServlet {
                                     t.setTransactionOrder(Utils.parseInt(s[1]));
                                 }
                                 // localizando a ordem
-                                salesOrder = salesOrderDAO.findSalesOrder(t.getTransactionOrder());
-                                t.setSalesOrder(salesOrder);
+                                order =  bd.selectSalesOrder(t.getTransactionOrder());
+                               // salesOrder = salesOrderDAO.findSalesOrder(t.getTransactionOrder());
+                                t.setSalesOrder(order);
                             }catch(Exception ex){
                                 ex.printStackTrace();
                             }
                         }
                         if(status){
                             t.setTransactionOrderStatus(1);
+                            t.setTransactionOptions(RapidSDK.userDisplayMessage(respMessage, "en"));
                         }else{
                             t.setTransactionOrderStatus(0);
                         }
@@ -169,7 +181,7 @@ public class Checkout extends HttpServlet {
                     }
                 }
             }catch(Exception ex){
-                ex.printStackTrace();
+                System.err.println("Erro ao localizar a transacao "+ ex.getMessage());
             }finally{
                response.sendRedirect("confirmation.jsp");
             }
