@@ -332,10 +332,11 @@
                     data-amount="<% if(order!=null){out.print((int) order.getTotalSalesOrder());} %>00"
                     data-currency="AUD"
                     data-invoiceref="INV-<%if(session!=null){out.print(sessionId);}%>"
+                    data-invoicenumber="<%if(session!=null){out.print(sessionId);}%>"
                     data-invoicedescription="Boutique Cellars - Wine"
                     data-email=""
                     data-phone=""
-                    data-resulturl="http://www.boutiquecellars.com/confirmation.jsp"
+                    data-resulturl="http://www.boutiquecellars.com/Checkout"
                     data-allowedit="true" >
                   </script> 
                   

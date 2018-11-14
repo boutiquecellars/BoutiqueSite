@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="br.com.itfox_BoutiqueCommerce_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>br.com.itfox.entity.EmailMkt</class>
+    <class>br.com.itfox.entity.Areaoper</class>
+    <class>br.com.itfox.entity.Transaction</class>
+    <class>br.com.itfox.entity.EmailMktProduct</class>
+    <class>br.com.itfox.entity.SalesOrder</class>
+    <class>br.com.itfox.entity.ProductImage</class>
+    <class>br.com.itfox.entity.Address</class>
+    <class>br.com.itfox.entity.EmailMktCart</class>
+    <class>br.com.itfox.entity.Logupload</class>
+    <class>br.com.itfox.entity.Log</class>
+    <class>br.com.itfox.entity.Wineries</class>
+    <class>br.com.itfox.entity.Product</class>
+    <class>br.com.itfox.entity.Profile</class>
+    <class>br.com.itfox.entity.Client</class>
+    <class>br.com.itfox.entity.Category</class>
+    <class>br.com.itfox.entity.SalesOrderItem</class>
+    <class>br.com.itfox.entity.ProductCarousel</class>
+    <class>br.com.itfox.entity.Brand</class>
+    <class>br.com.itfox.entity.Member1</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://boutiquecellars.com:3306/boutiquecellars?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="itfox"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="ITFOX@1"/>
+    </properties>
+  </persistence-unit>
+</persistence>

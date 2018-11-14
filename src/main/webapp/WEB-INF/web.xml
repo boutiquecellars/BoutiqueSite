@@ -12,6 +12,10 @@
         <servlet-name>ManagerClient</servlet-name>
         <servlet-class>br.com.itfox.servlet.ManagerClient</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Checkout</servlet-name>
+        <servlet-class>br.com.itfox.servlet.Checkout</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Test</servlet-name>
         <url-pattern>/Test</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ManagerClient</servlet-name>
         <url-pattern>/ManagerClient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Checkout</servlet-name>
+        <url-pattern>/Checkout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

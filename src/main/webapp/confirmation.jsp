@@ -1,3 +1,5 @@
+<%@page import="br.com.itfox.entity.SalesOrder"%>
+<%@page import="br.com.itfox.entity.Transaction"%>
 <%@page import="br.com.itfox.utils.Utils"%>
 <%@page import="br.com.itfox.beans.OrderItem"%>
 <%@page import="java.util.List"%>
@@ -87,17 +89,24 @@
         <!-- // include Navbar Default -->
         <%
         Order order = new Order();
-        String sessionId="";
+        Transaction t = new Transaction();
+        int orderId=0;
+        int transactionStatus = 0;
         if(session!=null){
-            order = (Order) session.getAttribute("order");
-            if(order!=null){
-                sessionId=order.getOrderId()+"";
+            // pegando a transacao
+            t = (Transaction) session.getAttribute("transaction");
+            if(t!=null){
+                orderId = t.getTransactionOrder();
+                transactionStatus = t.getTransactionOrderStatus();
             }
+            order = (Order) session.getAttribute("order");
+            
+            
         }
         %>
         <div class="container" id="container">
             <header class="page-header">
-                <h1 class="page-title">Checkout Order - https://api.ewaypayments.com/Transaction/InvoiceRef/INV-<%if(session!=null){out.print(sessionId);}%></h1>
+                <h1 class="page-title">Checkout Order <%=orderId%> - <%=order.getOrderId() %></h1>
             </header>
             <p class="checkout-login-text">Sign in or Register to faster order checkout. 
                 <span class="small"><br/>ALL TRANSACTIONS ARE PROCESSED IN AUSTRALIAN DOLLARS</span>
@@ -162,6 +171,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
+                    <!--
                     <h3 class="widget-title">Billing Details</h3>
                     <form>
                         <div class="form-group">
@@ -277,25 +287,10 @@
                              
                         
                         </div>
-                        <!--
-                        <div class="checkbox">
-                            <label>
-                                <input class="i-check" type="checkbox" id="create-account-checkbox" />Create Profile</label>
-                        </div>
-                        <div id="create-account" class="hide">
-                            <p>Create an account by entering the information below. If you are a returning customer please login at the top of the page.</p>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input class="form-control" type="password" name="pass" id="pass"/>
-                            </div>
-                            <div class="form-group">
-                                <label>Repeat Password</label>
-                                <input class="form-control" type="password" name="pass2" id="pass2"/>
-                            </div>
-                            <hr />
-                        </div>
-                        -->
+                        
+                        
                     </form>
+                    !-->
                 </div>
                 <div class="col-md-4">
                     <h3 class="widget-title">Payment</h3>
@@ -323,21 +318,7 @@
                         </div>
                     </div>
                     -->
-                    <a class="btn btn-primary" onclick="proceedPayment()" id="proceed-payment">Proceed Payment</a>
                     
-                    <script src="https://secure.ewaypayments.com/scripts/eCrypt.min.js"
-                    class="eway-paynow-button"
-                    id="eway-paynow-button"
-                    data-publicapikey="epk-1C624355-71AE-4E3A-886F-69201D3FD006"
-                    data-amount="<% if(order!=null){out.print((int) order.getTotalSalesOrder());} %>00"
-                    data-currency="AUD"
-                    data-invoiceref="INV-<%if(session!=null){out.print(sessionId);}%>"
-                    data-invoicedescription="Boutique Cellars - Wine"
-                    data-email=""
-                    data-phone=""
-                    data-resulturl="http://www.eway.com.au/shared-demo/results.aspx"
-                    data-allowedit="true" >
-                  </script> 
                   
                     <div class="gap gap-small"></div>
                     <!--
