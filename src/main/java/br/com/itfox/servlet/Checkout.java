@@ -54,8 +54,8 @@ public class Checkout extends HttpServlet {
                 String password = "zm3dRlSA";
                 String rapidEndpoint = "Sandbox";
                 String accessCode="F9802Af1q9L9fW_O3D2mwdZpJ_4nfZPIhbGu14mVYHtBB4CIR9fWUduVAtO1Gv4vJFmwGflc_9-wHsgIwP4k_dlE1lHoVMPgVHJ34p7QXLy_sVAVEt7ASXz9uZwC18Q6baYdZcnSDhEmQlgDXlXZEhuKhnQ==";
-                accessCode="C3AB9k1xvdgkguwwtWJ1KjmvjTCaDD7Fd5gl9PV5a__k5DOf3-fI_yW0Ek7gHaYgloPW4X7PN4II96fQkARxlD_e6yRtH_HfgiHH9DLVE7T9d3k0gFCWRPgwxgjHC__VJuF7TiDdsWaX1XNBxspM16NcwDQ==";
-                //accessCode = (String) request.getParameter("AccessCode");
+                //accessCode="C3AB9k1xvdgkguwwtWJ1KjmvjTCaDD7Fd5gl9PV5a__k5DOf3-fI_yW0Ek7gHaYgloPW4X7PN4II96fQkARxlD_e6yRtH_HfgiHH9DLVE7T9d3k0gFCWRPgwxgjHC__VJuF7TiDdsWaX1XNBxspM16NcwDQ==";
+                accessCode = (String) request.getParameter("AccessCode");
                 HttpSession session = request.getSession(true);
                 String firstName="";
                 String lastName="";
