@@ -27,6 +27,7 @@ import javax.servlet.http.HttpSession;
 /**
  *
  * @author belchiorpalma
+ * Checkout on eWay Payment
  */
 public class Checkout extends HttpServlet {
 
