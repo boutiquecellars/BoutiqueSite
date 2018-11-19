@@ -954,8 +954,8 @@ hr {
 .main-footer {
     position: relative;
     color: #fff;
-    height:0px;
-    padding-top: 62px!important;
+    height:200px;
+    padding-top: 65px!important;
 }    
 .main-footer .widget-title-sm {
   margin-bottom: 20px;
