@@ -961,13 +961,13 @@ hr {
   margin-bottom: 20px;
 }
 
-/* jwfnwjknf */
+/* pp 20/11/18 */
 .main-footer > .container {
     position: relative;
     background-color: white;
-    height:160px !important;
+    height:80px !important;
     color: #777;
-    padding:0px 15px 15px 30px !important;
+    /*padding:0px 15px 15px 30px !important;*/
 }
 .main-footer-img {
   position: absolute;
