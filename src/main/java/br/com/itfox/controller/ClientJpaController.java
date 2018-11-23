@@ -32,8 +32,9 @@ public class ClientJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Client client) {
+    public int create(Client client) {
         EntityManager em = null;
+        int clientId=0;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
@@ -57,11 +58,13 @@ public class ClientJpaController implements Serializable {
                 shippingAddress = em.merge(shippingAddress);
             }
             em.getTransaction().commit();
+            clientId = client.getClientId();
         } finally {
             if (em != null) {
                 em.close();
             }
         }
+        return clientId;
     }
 
     public void edit(Client client) throws NonexistentEntityException, Exception {

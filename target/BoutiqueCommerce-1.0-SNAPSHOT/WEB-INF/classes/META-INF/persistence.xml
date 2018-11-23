@@ -21,6 +21,7 @@
     <class>br.com.itfox.entity.ProductCarousel</class>
     <class>br.com.itfox.entity.Brand</class>
     <class>br.com.itfox.entity.Member1</class>
+    <class>br.com.itfox.entity.Address_1</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://boutiquecellars.com:3306/boutiquecellars?zeroDateTimeBehavior=convertToNull"/>

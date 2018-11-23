@@ -9,9 +9,12 @@ import br.com.itfox.beans.Client;
 import br.com.itfox.beans.Product;
 import br.com.itfox.utils.SendHtmlFormatedEmail;
 import br.com.itfox.business.BusinessDelegate;
+import br.com.itfox.controller.ClientJpaController;
+import br.com.itfox.controller.TransactionJpaController;
 import br.com.itfox.utils.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,11 +41,51 @@ public class ManagerClient extends HttpServlet {
         PrintWriter out = response.getWriter();
         String name = request.getParameter("firstName");
         String email = request.getParameter("email");
+        String lastName = request.getParameter("lastName");
+        String telephone = request.getParameter("telephone");
         String orderDetails = request.getParameter("orderDetails");
         String orderNumber = request.getParameter("orderNumber");
+        String dateBirth = request.getParameter("dateBirth");
+        String companyName1 = request.getParameter("companyName1");
+        String addStreet11 =  request.getParameter("addStreet11");
+        String addStreet12 =  request.getParameter("addStreet12");
+        String addSuburb1 =  request.getParameter("addSuburb1");
+        String addPostal1 =  request.getParameter("addPostal1");
+        String addState1 =  request.getParameter("addState1");
+        String companyName2 = request.getParameter("companyName2");
+        String addStreet21 =  request.getParameter("addStreet21");
+        String addStreet22 =  request.getParameter("addStreet22");
+        String addSuburb2 =  request.getParameter("addSuburb2");
+        String addPostal2 = request.getParameter("addPostal2");
+        String addState2=  request.getParameter("addState2");
+        
        
         String clientId = request.getParameter("id");
         String operation = request.getParameter("operation");
+        br.com.itfox.entity.Client  entityClient = new br.com.itfox.entity.Client();
+        EntityManagerFactory emf = (EntityManagerFactory)getServletContext().getAttribute("emf");
+        ClientJpaController clientDAO = new ClientJpaController(emf);
+        
+        // inserindo os dados no bean
+        entityClient.setFirstName(name);
+        entityClient.setLastName(lastName);
+        entityClient.setEmail(email);
+        entityClient.setTelephone(telephone);
+        entityClient.setDateBirth(dateBirth);
+        entityClient.setCompanyName1(companyName1);
+        entityClient.setStreetAddress11(addStreet11);
+        entityClient.setStreetAddress21(addStreet12);
+        entityClient.setSuburb1(addSuburb1);
+        entityClient.setPostal1(addPostal1);
+        entityClient.setState1(addState1);
+        entityClient.setCompanyName2(companyName2);
+        entityClient.setStreetAddress21(addStreet21);
+        entityClient.setStreetAddress22(addStreet22);
+        entityClient.setSuburb2(addSuburb2);
+        entityClient.setPostal2(addPostal2);
+        entityClient.setState2(addState2);
+        
+                
         if(name!=null && !name.isEmpty() && name!="" ){
             Client c = new Client();
             c.setName(name);
@@ -59,8 +102,8 @@ public class ManagerClient extends HttpServlet {
            
             int result = 0;
             if(operation !=null && !operation.isEmpty() && operation!="" && operation.equalsIgnoreCase("insert")){
-                
-                result= new BusinessDelegate().insertClient(c);
+                result = clientDAO.create(entityClient);
+                // result= new BusinessDelegate().insertClient(c);
                 if(result >0){
                     SendHtmlFormatedEmail s = new SendHtmlFormatedEmail();
                     s.sendingHtml(orderDetails, orderNumber, name, email);

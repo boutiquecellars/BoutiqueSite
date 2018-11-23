@@ -11,6 +11,8 @@ import br.com.itfox.controller.SalesOrderJpaController;
 import br.com.itfox.controller.TransactionJpaController;
 import br.com.itfox.entity.SalesOrder;
 import br.com.itfox.entity.Transaction;
+import br.com.itfox.utils.OrderDetailsHtml;
+import br.com.itfox.utils.SendHtmlFormatedEmail;
 import br.com.itfox.utils.Utils;
 import com.eway.payment.rapid.sdk.RapidClient;
 import com.eway.payment.rapid.sdk.RapidSDK;
@@ -54,7 +56,7 @@ public class Checkout extends HttpServlet {
                 String apiKey = "44DD7CfnAKlw1sNplZ8Ue/3imR3DcWfKokZOBerZ/ijRkuVRdfNQzNrQ05GYtW4ni6ACFB";
                 String password = "zm3dRlSA";
                 String rapidEndpoint = "Sandbox";
-                String accessCode="F9802Af1q9L9fW_O3D2mwdZpJ_4nfZPIhbGu14mVYHtBB4CIR9fWUduVAtO1Gv4vJFmwGflc_9-wHsgIwP4k_dlE1lHoVMPgVHJ34p7QXLy_sVAVEt7ASXz9uZwC18Q6baYdZcnSDhEmQlgDXlXZEhuKhnQ==";
+                String accessCode="";//"F9802Af1q9L9fW_O3D2mwdZpJ_4nfZPIhbGu14mVYHtBB4CIR9fWUduVAtO1Gv4vJFmwGflc_9-wHsgIwP4k_dlE1lHoVMPgVHJ34p7QXLy_sVAVEt7ASXz9uZwC18Q6baYdZcnSDhEmQlgDXlXZEhuKhnQ==";
                 //accessCode="C3AB9k1xvdgkguwwtWJ1KjmvjTCaDD7Fd5gl9PV5a__k5DOf3-fI_yW0Ek7gHaYgloPW4X7PN4II96fQkARxlD_e6yRtH_HfgiHH9DLVE7T9d3k0gFCWRPgwxgjHC__VJuF7TiDdsWaX1XNBxspM16NcwDQ==";
                 accessCode = (String) request.getParameter("AccessCode");
                 HttpSession session = request.getSession(true);
@@ -130,8 +132,17 @@ public class Checkout extends HttpServlet {
                             }
                         }
                         if(status){
+                            // ok.
                             t.setTransactionOrderStatus(1);
                             t.setTransactionOptions(RapidSDK.userDisplayMessage(respMessage, "en"));
+                            // send email to Avron
+                            try{
+                            SendHtmlFormatedEmail sendEmail = new SendHtmlFormatedEmail();
+                            StringBuilder orderDetails = OrderDetailsHtml.getOrderDetails(session);
+                            sendEmail.sendingHtml(orderDetails.toString(), invNumber, "Avron", "belchiorpalma@gmail.com");// bci.wines@gmail.com
+                            }catch(Exception ex){
+                                System.err.println("Erro ao enviar email "+ex.getLocalizedMessage());
+                            }
                         }else{
                             t.setTransactionOrderStatus(0);
                         }

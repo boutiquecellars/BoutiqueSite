@@ -256,7 +256,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Post Code</label>
-                                        <input class="form-control" type="text" name="shipping-postal" id="shipping-postal" />
+                                        <input class="form-control" type="text" name="shipping-postal" id="address-postal-2" />
                                     </div>
                                 </div>
                             </div>
@@ -387,6 +387,18 @@
             var orderNumber = $("#order").val();
             var orderDetails = $(".table").html();
             var dateBirth = $("#date-birth").val();
+            var companyName1 = $("#company-name").val();
+            var addStreet11 =  $("#address-street-11").val();
+            var addStreet12 =  $("#address-street-12").val();
+            var addSuburb1 =  $("#address-suburb-1").val();
+            var addPostal1 =  $("#address-postal-1").val();
+            var addState1 =  $("#address-state-1").val();
+            var companyName2 = $("#company-name-2").val();
+            var addStreet21 =  $("#address-street-21").val();
+            var addStreet22 =  $("#address-street-22").val();
+            var addSuburb2 =  $("#address-suburb-2").val();
+            var addPostal2 =  $("#address-postal-2").val();
+            var addState2=  $("#address-state-2").val();
             
             var error=0;
             
@@ -410,7 +422,7 @@
             
             if(error==0){
                 // gravando no banco e enviando email 
-                sendClient(firstName,lastName,email,orderDetails, orderNumber);
+                sendClient(firstName,lastName,email,tel, orderDetails, orderNumber,dateBirth, companyName1, addStreet11, addStreet12, addSuburb1, addPostal1, addState1, companyName2, addStreet21, addStreet22, addSuburb2, addPostal2, addState2);
                 //
                 $("#eway-paynow-button").attr("data-email",email);
                 $("#eway-paynow-button").attr("data-phone",tel);
@@ -423,12 +435,12 @@
             }
         }
         
-        function sendClient(firstName,lastName,email,orderDetails,orderNumber){
+        function sendClient(firstName,lastName,email,tel, orderDetails,orderNumber,dateBirth, companyName1, addStreet11, addStreet12, addSuburb1, addPostal1, addState1, companyName2, addStreet21, addStreet22, addSuburb2, addPostal2, addState2){
         var url="ManagerClient?";
         $.ajax({
             url: encodeURI(url),
             async: true,
-            data:{firstName:firstName,lastName:lastName,email:email,orderDetails:orderDetails,orderNumber:orderNumber,operation:"insert"},
+            data:{firstName:firstName,lastName:lastName,email:email,telephone:tel,orderDetails:orderDetails,orderNumber:orderNumber,operation:"insert", dateBirth:dateBirth, companyName1:companyName1, addStreet11:addStreet11, addStreet12:addStreet12, addSuburb1:addSuburb1, addPostal1:addPostal1, addState1:addState1, companyName2:companyName2, addStreet21:addStreet21, addStreet22:addStreet22, addSuburb2:addSuburb2, addPostal2:addPostal2, addState2:addState2},
             dataType: "json",
             beforeSend: function() {
                 $('#loading').modal('show');

@@ -34,16 +34,22 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Client.findByFirstName", query = "SELECT c FROM Client c WHERE c.firstName = :firstName"),
     @NamedQuery(name = "Client.findByLastName", query = "SELECT c FROM Client c WHERE c.lastName = :lastName"),
     @NamedQuery(name = "Client.findByEmail", query = "SELECT c FROM Client c WHERE c.email = :email"),
-    @NamedQuery(name = "Client.findByPhone", query = "SELECT c FROM Client c WHERE c.phone = :phone"),
+    @NamedQuery(name = "Client.findByTelephone", query = "SELECT c FROM Client c WHERE c.telephone = :telephone"),
     @NamedQuery(name = "Client.findByDateBirth", query = "SELECT c FROM Client c WHERE c.dateBirth = :dateBirth"),
-    @NamedQuery(name = "Client.findByCompanyName", query = "SELECT c FROM Client c WHERE c.companyName = :companyName"),
-    @NamedQuery(name = "Client.findByContactPerson", query = "SELECT c FROM Client c WHERE c.contactPerson = :contactPerson"),
-    @NamedQuery(name = "Client.findByStreetAddress1", query = "SELECT c FROM Client c WHERE c.streetAddress1 = :streetAddress1"),
-    @NamedQuery(name = "Client.findByStreetAddress2", query = "SELECT c FROM Client c WHERE c.streetAddress2 = :streetAddress2"),
-    @NamedQuery(name = "Client.findBySuburb", query = "SELECT c FROM Client c WHERE c.suburb = :suburb"),
-    @NamedQuery(name = "Client.findByPostcode", query = "SELECT c FROM Client c WHERE c.postcode = :postcode"),
-    @NamedQuery(name = "Client.findByState", query = "SELECT c FROM Client c WHERE c.state = :state"),
-    @NamedQuery(name = "Client.findBySameAsDelivery", query = "SELECT c FROM Client c WHERE c.sameAsDelivery = :sameAsDelivery")})
+    @NamedQuery(name = "Client.findByCompanyName1", query = "SELECT c FROM Client c WHERE c.companyName1 = :companyName1"),
+    @NamedQuery(name = "Client.findByContactPerson1", query = "SELECT c FROM Client c WHERE c.contactPerson1 = :contactPerson1"),
+    @NamedQuery(name = "Client.findByStreetAddress11", query = "SELECT c FROM Client c WHERE c.streetAddress11 = :streetAddress11"),
+    @NamedQuery(name = "Client.findByStreetAddress12", query = "SELECT c FROM Client c WHERE c.streetAddress12 = :streetAddress12"),
+    @NamedQuery(name = "Client.findBySuburb1", query = "SELECT c FROM Client c WHERE c.suburb1 = :suburb1"),
+    @NamedQuery(name = "Client.findByPostal1", query = "SELECT c FROM Client c WHERE c.postal1 = :postal1"),
+    @NamedQuery(name = "Client.findByState1", query = "SELECT c FROM Client c WHERE c.state1 = :state1"),
+    @NamedQuery(name = "Client.findBySameAsDelivery", query = "SELECT c FROM Client c WHERE c.sameAsDelivery = :sameAsDelivery"),
+    @NamedQuery(name = "Client.findByCompanyName2", query = "SELECT c FROM Client c WHERE c.companyName2 = :companyName2"),
+    @NamedQuery(name = "Client.findByStreetAddress21", query = "SELECT c FROM Client c WHERE c.streetAddress21 = :streetAddress21"),
+    @NamedQuery(name = "Client.findByStreetAddress22", query = "SELECT c FROM Client c WHERE c.streetAddress22 = :streetAddress22"),
+    @NamedQuery(name = "Client.findBySuburb2", query = "SELECT c FROM Client c WHERE c.suburb2 = :suburb2"),
+    @NamedQuery(name = "Client.findByPostal2", query = "SELECT c FROM Client c WHERE c.postal2 = :postal2"),
+    @NamedQuery(name = "Client.findByState2", query = "SELECT c FROM Client c WHERE c.state2 = :state2")})
 public class Client implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -65,36 +71,53 @@ public class Client implements Serializable {
     @Size(max = 445)
     @Column(name = "email")
     private String email;
-    // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Size(max = 45)
-    @Column(name = "phone")
-    private String phone;
+    @Column(name = "telephone")
+    private String telephone;
     @Size(max = 45)
     @Column(name = "date_birth")
     private String dateBirth;
     @Size(max = 450)
-    @Column(name = "company_name")
-    private String companyName;
+    @Column(name = "company_name1")
+    private String companyName1;
     @Size(max = 45)
-    @Column(name = "contact_person")
-    private String contactPerson;
+    @Column(name = "contact_person1")
+    private String contactPerson1;
     @Size(max = 450)
-    @Column(name = "street_address1")
-    private String streetAddress1;
+    @Column(name = "street_address11")
+    private String streetAddress11;
     @Size(max = 450)
-    @Column(name = "street_address2")
-    private String streetAddress2;
+    @Column(name = "street_address12")
+    private String streetAddress12;
     @Size(max = 450)
-    @Column(name = "suburb")
-    private String suburb;
+    @Column(name = "suburb1")
+    private String suburb1;
     @Size(max = 450)
-    @Column(name = "postcode")
-    private String postcode;
+    @Column(name = "postal1")
+    private String postal1;
     @Size(max = 450)
-    @Column(name = "state")
-    private String state;
+    @Column(name = "state1")
+    private String state1;
     @Column(name = "same_as_delivery")
     private Integer sameAsDelivery;
+    @Size(max = 450)
+    @Column(name = "company_name2")
+    private String companyName2;
+    @Size(max = 450)
+    @Column(name = "street_address21")
+    private String streetAddress21;
+    @Size(max = 450)
+    @Column(name = "street_address22")
+    private String streetAddress22;
+    @Size(max = 450)
+    @Column(name = "suburb2")
+    private String suburb2;
+    @Size(max = 45)
+    @Column(name = "postal2")
+    private String postal2;
+    @Size(max = 45)
+    @Column(name = "state2")
+    private String state2;
     @JoinColumn(name = "billing_address", referencedColumnName = "address_id")
     @ManyToOne
     private Address billingAddress;
@@ -149,12 +172,12 @@ public class Client implements Serializable {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public String getDateBirth() {
@@ -165,60 +188,60 @@ public class Client implements Serializable {
         this.dateBirth = dateBirth;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getCompanyName1() {
+        return companyName1;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setCompanyName1(String companyName1) {
+        this.companyName1 = companyName1;
     }
 
-    public String getContactPerson() {
-        return contactPerson;
+    public String getContactPerson1() {
+        return contactPerson1;
     }
 
-    public void setContactPerson(String contactPerson) {
-        this.contactPerson = contactPerson;
+    public void setContactPerson1(String contactPerson1) {
+        this.contactPerson1 = contactPerson1;
     }
 
-    public String getStreetAddress1() {
-        return streetAddress1;
+    public String getStreetAddress11() {
+        return streetAddress11;
     }
 
-    public void setStreetAddress1(String streetAddress1) {
-        this.streetAddress1 = streetAddress1;
+    public void setStreetAddress11(String streetAddress11) {
+        this.streetAddress11 = streetAddress11;
     }
 
-    public String getStreetAddress2() {
-        return streetAddress2;
+    public String getStreetAddress12() {
+        return streetAddress12;
     }
 
-    public void setStreetAddress2(String streetAddress2) {
-        this.streetAddress2 = streetAddress2;
+    public void setStreetAddress12(String streetAddress12) {
+        this.streetAddress12 = streetAddress12;
     }
 
-    public String getSuburb() {
-        return suburb;
+    public String getSuburb1() {
+        return suburb1;
     }
 
-    public void setSuburb(String suburb) {
-        this.suburb = suburb;
+    public void setSuburb1(String suburb1) {
+        this.suburb1 = suburb1;
     }
 
-    public String getPostcode() {
-        return postcode;
+    public String getPostal1() {
+        return postal1;
     }
 
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
+    public void setPostal1(String postal1) {
+        this.postal1 = postal1;
     }
 
-    public String getState() {
-        return state;
+    public String getState1() {
+        return state1;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setState1(String state1) {
+        this.state1 = state1;
     }
 
     public Integer getSameAsDelivery() {
@@ -227,6 +250,54 @@ public class Client implements Serializable {
 
     public void setSameAsDelivery(Integer sameAsDelivery) {
         this.sameAsDelivery = sameAsDelivery;
+    }
+
+    public String getCompanyName2() {
+        return companyName2;
+    }
+
+    public void setCompanyName2(String companyName2) {
+        this.companyName2 = companyName2;
+    }
+
+    public String getStreetAddress21() {
+        return streetAddress21;
+    }
+
+    public void setStreetAddress21(String streetAddress21) {
+        this.streetAddress21 = streetAddress21;
+    }
+
+    public String getStreetAddress22() {
+        return streetAddress22;
+    }
+
+    public void setStreetAddress22(String streetAddress22) {
+        this.streetAddress22 = streetAddress22;
+    }
+
+    public String getSuburb2() {
+        return suburb2;
+    }
+
+    public void setSuburb2(String suburb2) {
+        this.suburb2 = suburb2;
+    }
+
+    public String getPostal2() {
+        return postal2;
+    }
+
+    public void setPostal2(String postal2) {
+        this.postal2 = postal2;
+    }
+
+    public String getState2() {
+        return state2;
+    }
+
+    public void setState2(String state2) {
+        this.state2 = state2;
     }
 
     public Address getBillingAddress() {
