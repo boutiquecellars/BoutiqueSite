@@ -336,9 +336,14 @@ public class Client implements Serializable {
         return true;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return "br.com.itfox.entity.Client[ clientId=" + clientId + " ]";
+    }*/
+
+    @Override
+    public String toString() {
+        return "Client{" + "clientId=" + clientId + ", name=" + name + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", telephone=" + telephone + ", dateBirth=" + dateBirth + ", companyName1=" + companyName1 + ", contactPerson1=" + contactPerson1 + ", streetAddress11=" + streetAddress11 + ", streetAddress12=" + streetAddress12 + ", suburb1=" + suburb1 + ", postal1=" + postal1 + ", state1=" + state1 + ", sameAsDelivery=" + sameAsDelivery + ", companyName2=" + companyName2 + ", streetAddress21=" + streetAddress21 + ", streetAddress22=" + streetAddress22 + ", suburb2=" + suburb2 + ", postal2=" + postal2 + ", state2=" + state2 + '}';
     }
     
 }

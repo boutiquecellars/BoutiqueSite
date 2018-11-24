@@ -16,6 +16,7 @@ public class Order {
     private int orderId;
     private Date    orderDate;
     private Client client;
+    private br.com.itfox.entity.Client entityClient;
     private String description;
     private String orderStatus;
     private String session;
@@ -98,6 +99,14 @@ public class Order {
 
     public void setTotalSalesOrder(float totalSalesOrder) {
         this.totalSalesOrder = totalSalesOrder;
+    }
+
+    public br.com.itfox.entity.Client getEntityClient() {
+        return entityClient;
+    }
+
+    public void setEntityClient(br.com.itfox.entity.Client entityClient) {
+        this.entityClient = entityClient;
     }
     
     

@@ -7,8 +7,10 @@ package br.com.itfox.servlet;
 
 import br.com.itfox.beans.Order;
 import br.com.itfox.business.BusinessDelegate;
+import br.com.itfox.controller.ClientJpaController;
 import br.com.itfox.controller.SalesOrderJpaController;
 import br.com.itfox.controller.TransactionJpaController;
+import br.com.itfox.entity.Client;
 import br.com.itfox.entity.SalesOrder;
 import br.com.itfox.entity.Transaction;
 import br.com.itfox.utils.OrderDetailsHtml;
@@ -77,6 +79,8 @@ public class Checkout extends HttpServlet {
                 //SalesOrder salesOrder = new SalesOrder();
                 EntityManagerFactory emf = (EntityManagerFactory)getServletContext().getAttribute("emf");
                 TransactionJpaController transactionDAO = new TransactionJpaController(emf);
+                ClientJpaController clientDAO = new ClientJpaController(emf);
+                Client cli = new Client();
                 //SalesOrderJpaController salesOrderDAO = new SalesOrderJpaController(emf);
                 Order order = new Order();
                 BusinessDelegate bd = new BusinessDelegate();
@@ -125,6 +129,18 @@ public class Checkout extends HttpServlet {
                                 }
                                 // localizando a ordem
                                 order =  bd.selectSalesOrder(t.getTransactionOrder());
+                                System.out.println("codigo do cliente:"+order.getClient().getClientId());
+                                // localizando o cliente
+                                try{
+                                cli = clientDAO.findClient(order.getClient().getClientId());
+                                if(cli!=null){
+                                    System.out.println(order.getClient().getClientId()+"cliente:"+cli.getName()+" - "+ cli.getFirstName());
+                                }
+                                order.setEntityClient(cli);
+                                }catch(Exception ex){
+                                    System.err.println("Erro ao localizar cliente");
+                                }
+                                
                                // salesOrder = salesOrderDAO.findSalesOrder(t.getTransactionOrder());
                                 t.setSalesOrder(order);
                             }catch(Exception ex){
@@ -141,6 +157,7 @@ public class Checkout extends HttpServlet {
                             StringBuilder orderDetails = new StringBuilder();
                             orderDetails = OrderDetailsHtml.getOrderDetails(t);
                                 System.out.println("ORDER DETAILS:" + invNumber+" "+orderDetails.toString());
+                            sendEmail.sendingHtml(orderDetails.toString(), invNumber, "Avron", "pablo.pereira@gmail.com");// bci.wines@gmail.com
                             sendEmail.sendingHtml(orderDetails.toString(), invNumber, "Avron", "belchiorpalma@gmail.com");// bci.wines@gmail.com
                             }catch(Exception ex){
                                 System.err.println("Erro ao enviar email "+ex.getLocalizedMessage());

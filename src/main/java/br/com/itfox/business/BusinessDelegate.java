@@ -145,6 +145,10 @@ public class BusinessDelegate {
                     Order o = new Order();
                     OrderItem i = new OrderItem();
                     Product p = new Product();
+                    Client c = new Client();
+                    c.setClientId(rs.getInt("client_id"));
+                    o.setClient(c);
+                    
                     o.setOrderId(rs.getInt("order_id"));
                     o.setOrderDate(rs.getTimestamp("order_date"));
                     o.setDescription(rs.getString("description"));

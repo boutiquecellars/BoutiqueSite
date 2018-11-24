@@ -31,10 +31,10 @@ public class OrderDetailsHtml {
             // se a transacao não for nula
             s.append("<html><head>");
             s.append("<style type=\"text/css\" data-hse-inline-css=\"true\">\n" +
-            "      table{background-color:#cccccc;}\n"+
+            "      table{background-color:#fcfcfc;}\n"+
             "      td {\n" +
             "         font-family: Arial, sans-serif; "
-                    + "height:20px;\n" +
+                    + "height:20px; display:block; float:left;\n" +
             "      }\n" +
             " </style>");
             s.append("</head><body>");
@@ -60,9 +60,9 @@ public class OrderDetailsHtml {
                 }
                 // criando a tabela com o pedido
                 s.append("<div class=\"col-md-4\">");
-                s.append("  <h3 class=\"widget-title\">Order Info</h3>");
+                s.append("  <h3 class=\"widget-title\">Order Info: "+t.getTransactionOrder()+"</h3>");
                 s.append("  <div class=\"box\">");
-                s.append("      <table class=\"table\" style=\"width:422px;height:100%;padding:0;margin:0\">");
+                s.append("      <table class=\"table\" style=\"width:422px;padding:0;margin:0\">");
                 s.append("          <thead>");
                 s.append("              <tr style=\"height:12px\">");
                 s.append("                  <th style=\"width:312px\">Product</th>");
@@ -113,6 +113,13 @@ public class OrderDetailsHtml {
                 s.append("</tr>");
                 s.append("</tbody>");
                 s.append("</table>");
+               // s.append("<br/>Client: "+order.getClient().getClientId()+"<br/>");
+               // s.append("First Name:"+order.getClient().getName());
+                try{
+                s.append(order.getEntityClient().toString());
+                }catch(Exception ex){
+                    System.err.println("Erro ao localizar Cliente");
+                }
                 s.append("</div>");
                 s.append("</div>");
                 s.append("</body>");
