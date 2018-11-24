@@ -138,7 +138,9 @@ public class Checkout extends HttpServlet {
                             // send email to Avron
                             try{
                             SendHtmlFormatedEmail sendEmail = new SendHtmlFormatedEmail();
-                            StringBuilder orderDetails = OrderDetailsHtml.getOrderDetails(session);
+                            StringBuilder orderDetails = new StringBuilder();
+                            orderDetails = OrderDetailsHtml.getOrderDetails(t);
+                                System.out.println("ORDER DETAILS:" + invNumber+" "+orderDetails.toString());
                             sendEmail.sendingHtml(orderDetails.toString(), invNumber, "Avron", "belchiorpalma@gmail.com");// bci.wines@gmail.com
                             }catch(Exception ex){
                                 System.err.println("Erro ao enviar email "+ex.getLocalizedMessage());

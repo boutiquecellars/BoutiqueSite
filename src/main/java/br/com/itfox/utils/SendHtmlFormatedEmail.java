@@ -77,6 +77,9 @@ public class SendHtmlFormatedEmail {
              //String cid = email.embed(url, "BoutiqueCellars.com");
              
              // set the html message
+             if(orderDetails!=null && orderDetails.length()>10){
+                email.setHtmlMsg(orderDetails);  
+             }else{
              email.setHtmlMsg("Thank you for your order\n<br/><br/>" +
             "\n" +
             "We received your order #"+orderNumber+" and we are working on it now.\n<br/>" +
@@ -97,6 +100,7 @@ public class SendHtmlFormatedEmail {
             "AT THE ABOVE MENTIONED LICENSED PREMISES.<br/><br/>"+
                      "© Boutique Cellar Imports Pty Ltd | ABN 69 607 265 618"
              );
+             }
              
              // set the alternative message
              email.setTextMsg("Thank you for your order, We received your order #18765 and we are working on it now.\n" +

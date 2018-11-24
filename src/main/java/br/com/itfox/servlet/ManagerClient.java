@@ -10,10 +10,14 @@ import br.com.itfox.beans.Product;
 import br.com.itfox.utils.SendHtmlFormatedEmail;
 import br.com.itfox.business.BusinessDelegate;
 import br.com.itfox.controller.ClientJpaController;
+import br.com.itfox.controller.SalesOrderJpaController;
 import br.com.itfox.controller.TransactionJpaController;
+import br.com.itfox.entity.SalesOrder;
 import br.com.itfox.utils.Utils;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -58,6 +62,7 @@ public class ManagerClient extends HttpServlet {
         String addSuburb2 =  request.getParameter("addSuburb2");
         String addPostal2 = request.getParameter("addPostal2");
         String addState2=  request.getParameter("addState2");
+        String sameAsDelivery = request.getParameter("sameAsDelivery");
         
        
         String clientId = request.getParameter("id");
@@ -65,8 +70,10 @@ public class ManagerClient extends HttpServlet {
         br.com.itfox.entity.Client  entityClient = new br.com.itfox.entity.Client();
         EntityManagerFactory emf = (EntityManagerFactory)getServletContext().getAttribute("emf");
         ClientJpaController clientDAO = new ClientJpaController(emf);
+        SalesOrderJpaController salesDAO = new SalesOrderJpaController(emf);
         
         // inserindo os dados no bean
+        entityClient.setName(name+" "+lastName);
         entityClient.setFirstName(name);
         entityClient.setLastName(lastName);
         entityClient.setEmail(email);
@@ -74,7 +81,7 @@ public class ManagerClient extends HttpServlet {
         entityClient.setDateBirth(dateBirth);
         entityClient.setCompanyName1(companyName1);
         entityClient.setStreetAddress11(addStreet11);
-        entityClient.setStreetAddress21(addStreet12);
+        entityClient.setStreetAddress12(addStreet12);
         entityClient.setSuburb1(addSuburb1);
         entityClient.setPostal1(addPostal1);
         entityClient.setState1(addState1);
@@ -85,6 +92,13 @@ public class ManagerClient extends HttpServlet {
         entityClient.setPostal2(addPostal2);
         entityClient.setState2(addState2);
         
+        if(sameAsDelivery!=null && sameAsDelivery.equalsIgnoreCase("true")){
+            sameAsDelivery="1";
+        }else{
+            sameAsDelivery="0";
+        }
+        entityClient.setSameAsDelivery(Utils.parseInt(sameAsDelivery));
+        
                 
         if(name!=null && !name.isEmpty() && name!="" ){
             Client c = new Client();
@@ -93,6 +107,7 @@ public class ManagerClient extends HttpServlet {
             if(clientId !=null && !clientId.isEmpty() && clientId!=""){
                 try{
                 c.setClientId(Integer.parseInt(clientId));
+                entityClient.setClientId(Integer.parseInt(clientId));
                 }catch(Exception ex){
                     br.com.itfox.utils.Logger.getLogger(ex);
                 }
@@ -107,6 +122,20 @@ public class ManagerClient extends HttpServlet {
                 if(result >0){
                     SendHtmlFormatedEmail s = new SendHtmlFormatedEmail();
                     s.sendingHtml(orderDetails, orderNumber, name, email);
+                    // atualizando o pedido com o nome do cliente
+                    SalesOrder salesOrder = new SalesOrder();
+                    
+                    
+                    try {
+                        salesOrder = salesDAO.findSalesOrder(Utils.parseInt(orderNumber));
+                        salesOrder.setClientId(String.valueOf(result));
+                        salesOrder.setOrderId(Utils.parseInt(orderNumber));
+                        salesDAO.edit(salesOrder);
+                    } catch (Exception ex) {
+                        Logger.getLogger(ManagerClient.class.getName()).log(Level.SEVERE, null, ex);
+                        System.err.println("Erro ao atualizar o pedido: "+ ex.getLocalizedMessage());
+                    }
+                    
                 }
             }else if(operation !=null && !operation.isEmpty() && operation!="" && operation.equalsIgnoreCase("update")){
                 result = new BusinessDelegate().updateClient(c);
