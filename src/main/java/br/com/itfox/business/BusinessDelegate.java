@@ -107,8 +107,10 @@ public class BusinessDelegate {
                 ps.setInt(3, 1);
                 rs = ps.executeQuery();
                 while(rs.next()){
+                    Client c = new Client();
+                    c.setClientId(rs.getInt("client_id"));
                    order.setOrderId(rs.getInt("order_id"));
-                   order.setClient(new Client());
+                   order.setClient(c);
                    order.setOrderDate(rs.getTimestamp("order_date"));
                    order.setDescription(rs.getString("description"));
                    order.setOrderStatus(rs.getString("order_status"));
@@ -128,8 +130,8 @@ public class BusinessDelegate {
     
     public Order selectSalesOrder(int orderId){
         List<OrderItem> listOrderItem = new ArrayList<OrderItem>();
-        Order salesOrder = new Order();
-        salesOrder.setOrderId(orderId);
+        Order o = new Order();
+        o.setOrderId(orderId);
         Connection conn = new DBase(true).getConnection();
         float totalSalesOrder=0.0f;
         String sql = "";
@@ -142,10 +144,13 @@ public class BusinessDelegate {
                 ps.setInt(1, orderId);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next()){
-                    Order o = new Order();
+                   // Order o = new Order();
                     OrderItem i = new OrderItem();
                     Product p = new Product();
                     Client c = new Client();
+                    br.com.itfox.entity.Client entityClient = new br.com.itfox.entity.Client();
+                    entityClient.setClientId(rs.getInt("client_id"));
+                    o.setEntityClient(entityClient);
                     c.setClientId(rs.getInt("client_id"));
                     o.setClient(c);
                     
@@ -167,15 +172,17 @@ public class BusinessDelegate {
                     i.setOrder(o);
                     listOrderItem.add(i); // adicionando os itens do pedido na lista de itens
                     totalSalesOrder+=rs.getFloat("product_total");
+                    
+                    System.out.println("cliente:"+o.getClient().getClientId()+" entity client:"+o.getEntityClient().getClientId());
                 }
-                salesOrder.setItems(listOrderItem);
-                salesOrder.setTotalSalesOrder(totalSalesOrder);
+                o.setItems(listOrderItem);
+                o.setTotalSalesOrder(totalSalesOrder);
                 
             }catch(Exception ex){
                 ex.printStackTrace();
             }
         }    
-        return salesOrder;
+        return o;
     }
     
     public int insertSalesOrderItem(OrderItem o){
