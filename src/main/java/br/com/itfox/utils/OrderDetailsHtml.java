@@ -117,6 +117,8 @@ public class OrderDetailsHtml {
                // s.append("First Name:"+order.getClient().getName());
                 try{
                 s.append(order.getEntityClient().toString());
+                s.append("firstname:"+order.getEntityClient().getFirstName()+"<br>");
+                
                 }catch(Exception ex){
                     System.err.println("Erro ao localizar Cliente");
                 }
