@@ -61,7 +61,7 @@
                     </div>--%>
                 </div>
                 <ul class="main-footer-links-list">
-                    <li><a href="about-us.jsp">About Us</a>
+                    <%--<li><a href="about-us.jsp">About Us</a>--%>
                     </li>
                     <li><a href="support-customer-service.jsp">Support & Customer Service</a>
                     </li>

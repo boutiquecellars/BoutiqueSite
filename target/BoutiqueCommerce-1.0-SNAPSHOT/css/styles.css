@@ -1680,6 +1680,7 @@ hr {
   margin-bottom: 10px;
   padding: 0;
   font-weight: 500;
+  min-width: 175px;
 }
 .shopping-cart-total-list > li {
   margin-bottom: 10px;
