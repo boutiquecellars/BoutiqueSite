@@ -157,8 +157,10 @@ public class Checkout extends HttpServlet {
                             StringBuilder orderDetails = new StringBuilder();
                             orderDetails = OrderDetailsHtml.getOrderDetails(t);
                                 System.out.println("ORDER DETAILS:" + invNumber+" "+orderDetails.toString());
-                            sendEmail.sendingHtml(orderDetails.toString(), invNumber, "Avron", "pablo.pereira@gmail.com");// bci.wines@gmail.com
-                            sendEmail.sendingHtml(orderDetails.toString(), invNumber, "Avron", "belchiorpalma@gmail.com");// bci.wines@gmail.com
+                            //sendEmail.sendingHtml(orderDetails.toString(), invNumber, "Avron", "pablo.pereira@gmail.com");// bci.wines@gmail.com
+                            sendEmail.sendingHtml(orderDetails.toString(), invNumber, "Avron", "belchiorpalma@itfox.com.br");// bci.wines@gmail.com
+                            sendEmail.sendingHtml(orderDetails.toString(), invNumber, "Avron", t.getSalesOrder().getEntityClient().getEmail());// bci.wines@gmail.com
+                            sendEmail.sendingHtml(orderDetails.toString(), invNumber, "Avron", "bci.wines@gmail.com");// bci.wines@gmail.com
                             }catch(Exception ex){
                                 System.err.println("Erro ao enviar email "+ex.getLocalizedMessage());
                             }
