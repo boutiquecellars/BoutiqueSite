@@ -77,7 +77,7 @@ public class SendHtmlFormatedEmail {
              //String cid = email.embed(url, "BoutiqueCellars.com");
              
              // set the html message
-             if(orderDetails!=null && orderDetails.length()>10){
+             
                // email.setHtmlMsg(orderDetails);  
                 email.setHtmlMsg("Thank you for your order\n<br/><br/>" +
             "\n" +
@@ -100,28 +100,7 @@ public class SendHtmlFormatedEmail {
             "AT THE ABOVE MENTIONED LICENSED PREMISES.<br/><br/>"+
                      "© Boutique Cellar Imports Pty Ltd | ABN 69 607 265 618"
              );
-             }else{
-             email.setHtmlMsg("Thank you for your order\n<br/><br/>" +
-            "\n" +
-            "We received your order #"+orderNumber+" and we are working on it now.\n<br/>" +
-            "We will e-mail you an update as soon as your order is processed.\n<br/>" +
-            "\n<br/>" +
-            "Boutique Cellars team\n"+
-             "\n<br/><br/><img src='http://boutiquecellars.com/img/logoemail.jpg'/> \n" +
-             //orderDetails +
-             "<br/><br/>BOUTIQUE CELLARS SUPPORTS THE RESPONSIBLE SERVICE OF ALCOHOL. NSW: UNDER THE LIQUOR\n<br/>" +
-            "ACT 2007 IT IS AGAINST THE LAW TO SELL OR SUPPLY ALCOHOL TO, OR TO OBTAIN ALCOHOL ON\n<br/>" +
-            "BEHALF OF, A PERSON UNDER THE AGE OF 18 YEARS. NSW PACKAGED LIQUOR LICENCE NUMBER\n<br/>" +
-            "LIQP770016947. YOUR CONTRACT OF SALE IS WITH THE RELEVANT LICENSEE AT THE RELEVANT\n<br/>" +
-            "PREMISES FROM WHICH YOU ORDER IS ACCEPTED AND FULFILLED. LIQUOR IS SOLD FROM OUR\n<br/>" +
-            "PLATFORM ON BEHALF OF THE RELEVANT LICENSEE. ACCORDINGLY, YOUR OFFER TO PURCHASE IS\n<br/>" +
-            "SUBJECT TO ACCEPTANCE OF YOUR OFFER BY THE HOLDER OF THE LIQUOR LICENCE, CERTIFICATION\n<br/>" +
-            "AND EVIDENCE OF YOU BEING OVER 18 YEARS OF AGE, THE AVAILABILITY OF STOCK AND THE\n<br/>" +
-            "LIQUOR WHICH IS THE SUBJECT MATTER OF YOUR OFFER BEING ASCERTAINED AND APPROPRIATED\n<br/>" +
-            "AT THE ABOVE MENTIONED LICENSED PREMISES.<br/><br/>"+
-                     "© Boutique Cellar Imports Pty Ltd | ABN 69 607 265 618"
-             );
-             }
+             
              
              // set the alternative message
              email.setTextMsg("Thank you for your order, We received your order #18765 and we are working on it now.\n" +

@@ -121,6 +121,10 @@ public class ManagerClient extends HttpServlet {
                 // result= new BusinessDelegate().insertClient(c);
                 if(result >0){
                     SendHtmlFormatedEmail s = new SendHtmlFormatedEmail();
+                    orderDetails="We received your order #"+orderNumber+" and we are working on it now.\n<br/>" +
+                    "We will e-mail you an update as soon as your order is processed.\n<br/>" +
+                    "\n<br/>" +
+                    "Boutique Cellars team\n";
                     s.sendingHtml(orderDetails, orderNumber, name, email);
                     // atualizando o pedido com o nome do cliente
                     SalesOrder salesOrder = new SalesOrder();
