@@ -100,7 +100,7 @@ public class SendHtmlFormatedEmail {
                         + "of stock and the liquor which is the subject matter of your offer being ascertained "
                         + "and appropriated at the above mentioned licensed premises.\n" +
 "\n" +
-"© Boutique Cellar Imports Pty Ltd | ABN 69 607 265 618\n<br/>" +
+"© Boutique Cellar Imports Pty Ltd | ABN 69 607 265 618\n<br/>"
              );
              
              
