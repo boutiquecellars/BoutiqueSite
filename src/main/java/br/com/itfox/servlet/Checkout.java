@@ -188,6 +188,13 @@ public class Checkout extends HttpServlet {
                                 System.out.println("Errors: " +note);
                         }
                         
+                        // removendo o pedido da sessao
+                        try{
+                            session.setAttribute("order",null);
+                            session.removeAttribute("order");
+                        }catch(Exception ex){
+                            ex.printStackTrace();
+                        }
                         // persistindo
                         try{
                             transactionDAO.create(t);

@@ -79,7 +79,14 @@ public class SendHtmlFormatedEmail {
              // set the html message
              
                // email.setHtmlMsg(orderDetails);  
-                email.setHtmlMsg("Thank you for your order\n<br/><br/>" +
+                email.setHtmlMsg(
+                        "<html><head>"+
+            "<style type=\"text/css\" data-hse-inline-css=\"true\">\n" +
+            "       table{background-color:#fcfcfc;}\n"+
+            "       h1{text-size:30px; color:#333;} \n"+
+            " </style>"+
+            "</head><body>"+
+                        "<h1>Thank you for your order</h1>\n<br/><br/>" +
             "\n" +
            // "We received your order #"+orderNumber+" and we are working on it now.\n<br/>" +
            // "We will e-mail you an update as soon as your order is processed.\n<br/>" +
@@ -100,7 +107,8 @@ public class SendHtmlFormatedEmail {
                         + "of stock and the liquor which is the subject matter of your offer being ascertained "
                         + "and appropriated at the above mentioned licensed premises.\n" +
 "\n" +
-"© Boutique Cellar Imports Pty Ltd | ABN 69 607 265 618\n<br/>"
+"© Boutique Cellar Imports Pty Ltd | ABN 69 607 265 618\n<br/>"+
+                                "</body></html>"
              );
              
              
