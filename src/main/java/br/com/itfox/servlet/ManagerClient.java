@@ -63,7 +63,18 @@ public class ManagerClient extends HttpServlet {
         String addPostal2 = request.getParameter("addPostal2");
         String addState2=  request.getParameter("addState2");
         String sameAsDelivery = request.getParameter("sameAsDelivery");
-        String shipping = request.getParameter("shipping");
+        String strShipping = request.getParameter("shipping");
+        String strSubtotal = request.getParameter("subtotal");
+        String strGst = request.getParameter("gst");
+        String strTotal = request.getParameter("total");
+        float shipping=0;
+        float subtotal=0;
+        float gst =0;
+        float total = 0;
+        shipping = Utils.parseFloat(strShipping);
+        subtotal = Utils.parseFloat(strSubtotal);
+        gst = Utils.parseFloat(strGst);
+        total = Utils.parseFloat(strTotal);
         
        
         String clientId = request.getParameter("id");
@@ -136,6 +147,9 @@ public class ManagerClient extends HttpServlet {
                         salesOrder.setClientId(String.valueOf(result));
                         salesOrder.setOrderId(Utils.parseInt(orderNumber));
                         salesOrder.setShipping(shipping);
+                        salesOrder.setSubtotal(subtotal);
+                        salesOrder.setGst(gst);
+                        salesOrder.setTotal(total);
                         
                         salesDAO.edit(salesOrder);
                     } catch (Exception ex) {

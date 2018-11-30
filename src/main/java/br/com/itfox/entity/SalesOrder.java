@@ -63,9 +63,14 @@ public class SalesOrder implements Serializable {
     @Size(max = 45)
     @Column(name = "ip")
     private String ip;
-    @Size(max = 45)
     @Column(name = "shipping")
-    private String shipping;
+    private float shipping;
+    @Column(name = "subtotal")
+    private float subtotal;
+    @Column(name = "gst")
+    private float gst;
+    @Column(name = "total")
+    private float total;
 
     public SalesOrder() {
     }
@@ -130,13 +135,39 @@ public class SalesOrder implements Serializable {
         this.ip = ip;
     }
 
-    public String getShipping() {
+    public float getShipping() {
         return shipping;
     }
 
-    public void setShipping(String shipping) {
+    public void setShipping(float shipping) {
         this.shipping = shipping;
     }
+
+    public float getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(float subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public float getGst() {
+        return gst;
+    }
+
+    public void setGst(float gst) {
+        this.gst = gst;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+
+    
     
     
 
