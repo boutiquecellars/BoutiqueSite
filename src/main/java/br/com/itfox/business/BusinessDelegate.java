@@ -137,7 +137,7 @@ public class BusinessDelegate {
         String sql = "";
         if(conn!=null ){
             try {
-                sql = "SELECT i.order_item_id, i.order_id, i.product_id, i.product_quantity, i.product_price, i.product_descount, i.product_total, i.order_item_status, o.client_id, o.order_date, o.description, o.order_status, o.session, o.ip, p.name "+
+                sql = "SELECT i.order_item_id, i.order_id, i.product_id, i.product_quantity, i.product_price, i.product_descount, i.product_total, i.order_item_status, o.client_id, o.order_date, o.description, o.order_status, o.session, o.ip, o.shipping, o.subtotal, o.gst, o.total, p.name "+
                       "from sales_order_item i, product p, sales_order o "+
                       "where p.product_id=i.product_id and o.order_id=i.order_id and o.order_id=?";
                 PreparedStatement ps = conn.prepareStatement(sql);
@@ -160,6 +160,10 @@ public class BusinessDelegate {
                     o.setOrderStatus(rs.getString("order_status"));
                     o.setSession(rs.getString("session"));
                     o.setIp(rs.getString("ip"));
+                    o.setShipping(rs.getFloat("shipping"));
+                    o.setSubtotal(rs.getFloat("subtotal"));
+                    o.setGst(rs.getFloat("gst"));
+                    o.setTotal(rs.getFloat("total"));
                     p.setProductId(rs.getInt("product_id"));
                     p.setName(rs.getString("name"));
                     i.setProduct(p);

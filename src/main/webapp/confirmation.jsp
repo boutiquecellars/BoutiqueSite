@@ -166,22 +166,22 @@
                                 <tr>
                                     <td>Subtotal</td>
                                     <td></td>
-                                    <td>AUD$<% if(order!=null){out.print(Utils.formatDecimal(order.getTotalSalesOrder()/1.1));} %></td>
+                                    <td>AUD$<% if(order!=null){out.print(Utils.formatDecimal(order.getSubtotal()));} %></td>
                                 </tr>
                                 <tr>
                                     <td>Shipping</td>
                                     <td></td>
-                                    <td>AUD$0</td>
+                                    <td>AUD$ <% if(order!=null){out.print(Utils.formatDecimal(order.getShipping()));}%></td>
                                 </tr>
                                 <tr>
                                     <td>GST</td>
                                     <td></td>
-                                    <td>AUD$<% if(order!=null){out.print(Utils.formatDecimal((order.getTotalSalesOrder()/1.1)*0.1));} %></td>
+                                    <td>AUD$<% if(order!=null){out.print(Utils.formatDecimal((order.getGst())));} %></td>
                                 </tr>
                                 <tr>
                                     <td>Total</td>
                                     <td></td>
-                                    <td>AUD$<% if(order!=null){out.print(Utils.formatDecimal(order.getTotalSalesOrder()));} %></td>
+                                    <td>AUD$<% if(order!=null){out.print(Utils.formatDecimal(order.getTotal()));} %></td>
                                 </tr>
                             </tbody>
                         </table>

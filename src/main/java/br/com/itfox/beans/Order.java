@@ -23,6 +23,10 @@ public class Order {
     private String ip;
     private List<OrderItem> items;
     private float totalSalesOrder;
+    private float shipping;
+    private float subtotal;
+    private float gst;
+    private float total;
 
     public int getOrderId() {
         return orderId;
@@ -108,6 +112,39 @@ public class Order {
     public void setEntityClient(br.com.itfox.entity.Client entityClient) {
         this.entityClient = entityClient;
     }
+
+    public float getShipping() {
+        return shipping;
+    }
+
+    public void setShipping(float shipping) {
+        this.shipping = shipping;
+    }
+
+    public float getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(float subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public float getGst() {
+        return gst;
+    }
+
+    public void setGst(float gst) {
+        this.gst = gst;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+    
     
     
 }
