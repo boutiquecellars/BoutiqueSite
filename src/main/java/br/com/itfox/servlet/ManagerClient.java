@@ -63,6 +63,7 @@ public class ManagerClient extends HttpServlet {
         String addPostal2 = request.getParameter("addPostal2");
         String addState2=  request.getParameter("addState2");
         String sameAsDelivery = request.getParameter("sameAsDelivery");
+        String shipping = request.getParameter("shipping");
         
        
         String clientId = request.getParameter("id");
@@ -134,6 +135,8 @@ public class ManagerClient extends HttpServlet {
                         salesOrder = salesDAO.findSalesOrder(Utils.parseInt(orderNumber));
                         salesOrder.setClientId(String.valueOf(result));
                         salesOrder.setOrderId(Utils.parseInt(orderNumber));
+                        salesOrder.setShipping(shipping);
+                        
                         salesDAO.edit(salesOrder);
                     } catch (Exception ex) {
                         Logger.getLogger(ManagerClient.class.getName()).log(Level.SEVERE, null, ex);

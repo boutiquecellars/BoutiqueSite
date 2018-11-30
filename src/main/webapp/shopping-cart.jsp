@@ -127,11 +127,22 @@
                     <ul class="shopping-cart-total-list">
                         <li><span>Subtotal</span><span>AUD$<% if(order!=null){out.print(Utils.formatDecimal(order.getTotalSalesOrder()/1.1));} %></span>
                         </li>
-                        <li><span>Shipping</span><span>Free</span>
+                        <li><span>Shipping</span>
+                            <span>
+                                <%
+                                 float shipping=0.0f;   
+                                 if(order.getTotalSalesOrder()<=300){
+                                     shipping=20;
+                                     {out.print("AUD$ "+Utils.formatDecimal(shipping));}
+                                 }else{
+                                     out.print("Free");
+                                 }
+                                %>
+                                </span>
                         </li>
                         <li><span>GST</span><span>AUD$<% if(order!=null){out.print(Utils.formatDecimal((order.getTotalSalesOrder()/1.1)*0.1));} %></span>
                         </li>
-                        <li><span>Total</span><span>AUD$<% if(order!=null){out.print(Utils.formatDecimal(order.getTotalSalesOrder()));} %></span>
+                        <li><span>Total</span><span>AUD$<% if(order!=null){out.print(Utils.formatDecimal(order.getTotalSalesOrder()+shipping));} %></span>
                         </li>
                     </ul><a class="btn btn-primary" href="checkout.jsp">Checkout</a>
                     

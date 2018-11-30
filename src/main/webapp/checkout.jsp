@@ -145,7 +145,16 @@
                                 <tr>
                                     <td>Shipping</td>
                                     <td></td>
-                                    <td>AUD$0</td>
+                                    <td><%
+                                 float shipping=0.0f;   
+                                 if(order.getTotalSalesOrder()<=300){
+                                     shipping=20;
+                                     {out.print("AUD$"+Utils.formatDecimal(shipping));}
+                                 }else{
+                                     out.print("Free");
+                                 }
+                                %><input type="hidden" name="shipping" id="shipping" value="<%=shipping%>"/>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>GST</td>
@@ -155,7 +164,7 @@
                                 <tr>
                                     <td>Total</td>
                                     <td></td>
-                                    <td>AUD$<% if(order!=null){out.print(Utils.formatDecimal(order.getTotalSalesOrder()));} %></td>
+                                    <td>AUD$<% if(order!=null){out.print(Utils.formatDecimal(order.getTotalSalesOrder()+shipping));} %></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -329,7 +338,7 @@
                     class="eway-paynow-button"
                     id="eway-paynow-button"
                     data-publicapikey="epk-1C624355-71AE-4E3A-886F-69201D3FD006"
-                    data-amount="<% if(order!=null){out.print((int) order.getTotalSalesOrder());} %>00"
+                    data-amount="<% if(order!=null){out.print((int) order.getTotalSalesOrder()+shipping);} %>00"
                     data-currency="AUD"
                     data-invoiceref="INV-<%if(session!=null){out.print(sessionId);}%>"
                     data-invoicedescription="Boutique Cellars - Wine"
@@ -400,6 +409,7 @@
             var addSuburb2 =  $("#address-suburb-2").val();
             var addPostal2 =  $("#address-postal-2").val();
             var addState2=  $("#address-state-2").val();
+            var shipping = $("#shipping").val();
             
             var error=0;
             
@@ -423,7 +433,7 @@
             
             if(error==0){
                 // gravando no banco e enviando email 
-                sendClient(firstName,lastName,email,tel, orderDetails, orderNumber,dateBirth, companyName1, addStreet11, addStreet12, addSuburb1, addPostal1, addState1,sameAsDelivery, companyName2, addStreet21, addStreet22, addSuburb2, addPostal2, addState2);
+                sendClient(firstName,lastName,email,tel, orderDetails, orderNumber,dateBirth, companyName1, addStreet11, addStreet12, addSuburb1, addPostal1, addState1,sameAsDelivery, companyName2, addStreet21, addStreet22, addSuburb2, addPostal2, addState2, shipping);
                 //
                 $("#eway-paynow-button").attr("data-email",email);
                 $("#eway-paynow-button").attr("data-phone",tel);
@@ -436,12 +446,12 @@
             }
         }
         
-        function sendClient(firstName,lastName,email,tel, orderDetails,orderNumber,dateBirth, companyName1, addStreet11, addStreet12, addSuburb1, addPostal1, addState1,sameAsDelivery, companyName2, addStreet21, addStreet22, addSuburb2, addPostal2, addState2){
+        function sendClient(firstName,lastName,email,tel, orderDetails,orderNumber,dateBirth, companyName1, addStreet11, addStreet12, addSuburb1, addPostal1, addState1,sameAsDelivery, companyName2, addStreet21, addStreet22, addSuburb2, addPostal2, addState2, shipping){
         var url="ManagerClient?";
         $.ajax({
             url: encodeURI(url),
             async: true,
-            data:{firstName:firstName,lastName:lastName,email:email,telephone:tel,orderDetails:orderDetails,orderNumber:orderNumber,operation:"insert", dateBirth:dateBirth, companyName1:companyName1, addStreet11:addStreet11, addStreet12:addStreet12, addSuburb1:addSuburb1, addPostal1:addPostal1, addState1:addState1,sameAsDelivery:sameAsDelivery, companyName2:companyName2, addStreet21:addStreet21, addStreet22:addStreet22, addSuburb2:addSuburb2, addPostal2:addPostal2, addState2:addState2},
+            data:{firstName:firstName,lastName:lastName,email:email,telephone:tel,orderDetails:orderDetails,orderNumber:orderNumber,operation:"insert", dateBirth:dateBirth, companyName1:companyName1, addStreet11:addStreet11, addStreet12:addStreet12, addSuburb1:addSuburb1, addPostal1:addPostal1, addState1:addState1,sameAsDelivery:sameAsDelivery, companyName2:companyName2, addStreet21:addStreet21, addStreet22:addStreet22, addSuburb2:addSuburb2, addPostal2:addPostal2, addState2:addState2, shipping:shipping},
             dataType: "json",
             beforeSend: function() {
                 $('#loading').modal('show');

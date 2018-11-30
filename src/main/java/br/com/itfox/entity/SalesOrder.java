@@ -63,6 +63,9 @@ public class SalesOrder implements Serializable {
     @Size(max = 45)
     @Column(name = "ip")
     private String ip;
+    @Size(max = 45)
+    @Column(name = "shipping")
+    private String shipping;
 
     public SalesOrder() {
     }
@@ -126,6 +129,16 @@ public class SalesOrder implements Serializable {
     public void setIp(String ip) {
         this.ip = ip;
     }
+
+    public String getShipping() {
+        return shipping;
+    }
+
+    public void setShipping(String shipping) {
+        this.shipping = shipping;
+    }
+    
+    
 
     @Override
     public int hashCode() {
