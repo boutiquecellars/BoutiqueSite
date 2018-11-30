@@ -28,7 +28,7 @@
                             <div class="product-caption-price"><span class="product-caption-price-new">$71</span>
                             </div>
                             <ul class="product-caption-feature-list">
-                                <li>Free Shipping</li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                             <div class="product-caption-price"><span class="product-caption-price-old">$89</span><span class="product-caption-price-new">$72</span>
                             </div>
                             <ul class="product-caption-feature-list">
-                                <li>Free Shipping</li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                             <div class="product-caption-price"><span class="product-caption-price-old">$52</span><span class="product-caption-price-new">$16</span>
                             </div>
                             <ul class="product-caption-feature-list">
-                                <li>Free Shipping</li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                             </div>
                             <ul class="product-caption-feature-list">
                                 <li>5 left</li>
-                                <li>Free Shipping</li>
+                                
                             </ul>
                         </div>
                     </div>

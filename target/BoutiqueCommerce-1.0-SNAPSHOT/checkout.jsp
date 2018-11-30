@@ -387,6 +387,7 @@
             var orderNumber = $("#order").val();
             var orderDetails = $(".table").html();
             var dateBirth = $("#date-birth").val();
+            var sameAsDelivery = $("#shipping-address-checkbox").is(":checked");
             var companyName1 = $("#company-name").val();
             var addStreet11 =  $("#address-street-11").val();
             var addStreet12 =  $("#address-street-12").val();
@@ -422,7 +423,7 @@
             
             if(error==0){
                 // gravando no banco e enviando email 
-                sendClient(firstName,lastName,email,tel, orderDetails, orderNumber,dateBirth, companyName1, addStreet11, addStreet12, addSuburb1, addPostal1, addState1, companyName2, addStreet21, addStreet22, addSuburb2, addPostal2, addState2);
+                sendClient(firstName,lastName,email,tel, orderDetails, orderNumber,dateBirth, companyName1, addStreet11, addStreet12, addSuburb1, addPostal1, addState1,sameAsDelivery, companyName2, addStreet21, addStreet22, addSuburb2, addPostal2, addState2);
                 //
                 $("#eway-paynow-button").attr("data-email",email);
                 $("#eway-paynow-button").attr("data-phone",tel);
@@ -435,12 +436,12 @@
             }
         }
         
-        function sendClient(firstName,lastName,email,tel, orderDetails,orderNumber,dateBirth, companyName1, addStreet11, addStreet12, addSuburb1, addPostal1, addState1, companyName2, addStreet21, addStreet22, addSuburb2, addPostal2, addState2){
+        function sendClient(firstName,lastName,email,tel, orderDetails,orderNumber,dateBirth, companyName1, addStreet11, addStreet12, addSuburb1, addPostal1, addState1,sameAsDelivery, companyName2, addStreet21, addStreet22, addSuburb2, addPostal2, addState2){
         var url="ManagerClient?";
         $.ajax({
             url: encodeURI(url),
             async: true,
-            data:{firstName:firstName,lastName:lastName,email:email,telephone:tel,orderDetails:orderDetails,orderNumber:orderNumber,operation:"insert", dateBirth:dateBirth, companyName1:companyName1, addStreet11:addStreet11, addStreet12:addStreet12, addSuburb1:addSuburb1, addPostal1:addPostal1, addState1:addState1, companyName2:companyName2, addStreet21:addStreet21, addStreet22:addStreet22, addSuburb2:addSuburb2, addPostal2:addPostal2, addState2:addState2},
+            data:{firstName:firstName,lastName:lastName,email:email,telephone:tel,orderDetails:orderDetails,orderNumber:orderNumber,operation:"insert", dateBirth:dateBirth, companyName1:companyName1, addStreet11:addStreet11, addStreet12:addStreet12, addSuburb1:addSuburb1, addPostal1:addPostal1, addState1:addState1,sameAsDelivery:sameAsDelivery, companyName2:companyName2, addStreet21:addStreet21, addStreet22:addStreet22, addSuburb2:addSuburb2, addPostal2:addPostal2, addState2:addState2},
             dataType: "json",
             beforeSend: function() {
                 $('#loading').modal('show');

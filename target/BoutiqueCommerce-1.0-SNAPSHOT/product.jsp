@@ -144,7 +144,7 @@
                         <h1><%=p.getName()%></h1>
                         <!--<p><%=p.getC().getCategory() %></p>-->
                         <p class="product-page-price">AUD$<%=Utils.formatDecimal(p.getPrice())%></p>
-                        <p class="text-muted text-sm">Free Shipping</p>
+                        
                         <p>Year:<%=p.getYear() %></p>
                         <p>Varietal:<%=p.getVarietal() %></p>
                         <p>Region:<%=p.getRegion() %></p>

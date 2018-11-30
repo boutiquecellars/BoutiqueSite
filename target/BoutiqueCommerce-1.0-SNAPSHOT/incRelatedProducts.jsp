@@ -51,7 +51,7 @@ List<Product> listProducts = bd.selectProductsLight(Utils.parseInt(categoryId), 
                             <div class="product-caption-price"><span class="product-caption-price-new">AUD$<%=Utils.formatDecimal(p.getPrice())%></span>
                             </div>
                             <ul class="product-caption-feature-list">
-                                <li>Free Shipping</li>
+                                
                             </ul>
                         </div>
                     </div>
