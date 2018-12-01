@@ -36,8 +36,8 @@ List<Product> listProducts = bd.selectProductsLight(Utils.parseInt(categoryId), 
                                     <!-- <li>hot</li> -->
                                 </ul>
                                 <div class="product-img-wrap">
-                                    <img class="product-img-primary" src="http://boutiquecellars.com/wine/imgs/boutique_cellars_<%=p.getNameReplaceAll(true)%>" alt="Image Alternative text" title="Image Title" />
-                                    <img class="product-img-alt" src="http://boutiquecellars.com/wine/imgs/boutique_cellars_<%=p.getNameReplaceAll(true)%>" alt="Image Alternative text" title="Image Title" />
+                                    <img class="product-img-primary" src="https://boutiquecellars.com/wine/imgs/boutique_cellars_<%=p.getNameReplaceAll(true)%>" alt="Image Alternative text" title="Image Title" />
+                                    <img class="product-img-alt" src="https://boutiquecellars.com/wine/imgs/boutique_cellars_<%=p.getNameReplaceAll(true)%>" alt="Image Alternative text" title="Image Title" />
                                 </div>
                                 <a class="product-link" href="product.jsp?wine=<%=p.getNameReplaceAll(false)%>&product_id=<%=p.getProductId() %>"></a>
                                 <div class="product-caption">

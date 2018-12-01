@@ -88,7 +88,7 @@
                                  %>
                             <li>
                                 <a class="dropdown-menu-shipping-cart-img" href="#">
-                                    <img src="http://boutiquecellars.com/wine/imgs/boutique_cellars_<%=i.getProduct().getNameReplaceAll(true)%>" alt="Image Alternative text" title="Image Title" />
+                                    <img src="https://boutiquecellars.com/wine/imgs/boutique_cellars_<%=i.getProduct().getNameReplaceAll(true)%>" alt="Image Alternative text" title="Image Title" />
                                 </a>
                                 <div class="dropdown-menu-shipping-cart-inner">
                                     <p class="dropdown-menu-shipping-cart-price">AUD$<%=i.getProductTotal() %></p>

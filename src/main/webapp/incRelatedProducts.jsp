@@ -30,7 +30,7 @@ List<Product> listProducts = bd.selectProductsLight(Utils.parseInt(categoryId), 
                     <div class="product product-sm-left ">
                         <ul class="product-labels"></ul>
                         <div class="product-img-wrap">
-                            <img class="product-img" src="http://boutiquecellars.com/wine/imgs/boutique_cellars_<%=p.getNameReplaceAll(true)%>" alt="Image Alternative text" title="Image Title" />
+                            <img class="product-img" src="https://boutiquecellars.com/wine/imgs/boutique_cellars_<%=p.getNameReplaceAll(true)%>" alt="Image Alternative text" title="Image Title" />
                         </div>
                         <a class="product-link" href="product.jsp?wine=<%=p.getNameReplaceAll(false)%>&product_id=<%=p.getProductId() %>"></a>
                         <div class="product-caption">

@@ -22,7 +22,7 @@ List<Product> listProducts = bd.selectProductsCarousel();
                                 <h4 class="slider-item-caption-title"><%=p.getName()%></h4>
                                 <p class="slider-item-caption-desc"><%=p.getMetaTagTitle()%></p><a class="btn btn-lg btn-ghost btn-white" href="product.jsp?wine=<%=p.getNameReplaceAll(false)%>&product_id=<%=p.getProductId()%>">Shop Now</a>
                             </div>
-                            <img class="slider-item-img-right" src="http://boutiquecellars.com/wine/imgs/boutique_cellars_<%=p.getNameReplaceAll(true)%>" alt="<%=p.getName()%> title="<%=p.getMetaTagTitle()%>" style="top: 60%; width: 17%; margin-right: 200px" />
+                            <img class="slider-item-img-right" src="https://boutiquecellars.com/wine/imgs/boutique_cellars_<%=p.getNameReplaceAll(true)%>" alt="<%=p.getName()%> title="<%=p.getMetaTagTitle()%>" style="top: 60%; width: 17%; margin-right: 200px" />
                         </div>
                     </div>
                 </div>
