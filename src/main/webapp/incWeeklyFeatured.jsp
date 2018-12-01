@@ -27,6 +27,7 @@ List<Product> listProducts = bd.selectProductsLight();
                         </div>
                         <a class="product-link" href="product.jsp?wine=<%=p.getNameReplaceAll(false)%>&product_id=<%=p.getProductId()%>"><%=p.getName()%> </a>
                         <div class="product-caption">
+                            <!--
                             <ul class="product-caption-rating">
                                 <li class="rated"><i class="fa fa-star"></i>
                                 </li>
@@ -38,7 +39,7 @@ List<Product> listProducts = bd.selectProductsLight();
                                 </li>
                                 <li><i class="fa fa-star"></i>
                                 </li>
-                            </ul>
+                            </ul> -->
                             <h5 class="product-caption-title"><%=p.getName()%></h5>
                             <div class="product-caption-price"><span class="product-caption-price-new">AUD$<%=Utils.formatDecimal(p.getPrice())%></span>
                             </div>
