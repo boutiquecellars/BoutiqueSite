@@ -76,16 +76,17 @@
             <header class="page-header">
                 <h1 class="page-title">Contact Us</h1>
             </header>
+            <!--
             <div class="row">
                 <div class="col-md-9">
                     <p class="lead">Lacus dolor placerat rutrum facilisi tempus mauris aenean sociis neque platea metus eros cum diam tellus facilisi ultricies lectus curae curabitur quam libero viverra nam vitae phasellus lectus primis lectus</p>
                 </div>
-            </div>
+            </div>-->
             <div class="gap gap-small"></div>
             <div class="row" data-gutter="60">
                 <div class="col-md-5">
                     <h3 class="widget-title">Leave a Message</h3>
-                    <p class="text-muted">Class conubia id magna cursus conubia proin venenatis suscipit aliquet massa dui odio velit ultrices augue luctus lorem placerat tortor</p>
+                    <p class="text-muted">Please leave your details and a message if you need further information about our wine selection, payments and returns. </p>
                     <form>
                         <div class="row">
                             <div class="col-md-6">
