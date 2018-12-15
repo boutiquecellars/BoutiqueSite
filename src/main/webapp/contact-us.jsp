@@ -111,62 +111,23 @@
                 <div class="col-md-7">
                     <div class="row">
                         <div class="col-md-4">
-                            <h3 class="widget-title">Usa</h3>
+                            <h3 class="widget-title">Australia</h3>
                             <ul class="contact-list">
                                 <li>
-                                    <h5>Email</h5><a href="#">usa@thebox.com</a>
+                                    <h5>Email</h5><a href="#">Avron613@gmail.com</a>
                                 </li>
                                 <li>
                                     <h5>Phone Number</h5>
-                                    <p>+1-202-555-0191</p>
+                                    <p>+61 413 725 449</p>
                                 </li>
+                                
                                 <li>
-                                    <h5>Skype</h5>
-                                    <p>TheBoxUs</p>
-                                </li>
-                                <li>
-                                    <h5>Address</h5><address>795 Folsom Ave, Suite 600<br />San Francisco, CA 94107</address>
+                                    <h5>Address</h5><address>500 Victoria Street, Wetherill Park, Sydney NSW 2164, Australia</address>
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-4">
-                            <h3 class="widget-title">France</h3>
-                            <ul class="contact-list">
-                                <li>
-                                    <h5>Email</h5><a href="#">fr@thebox.com</a>
-                                </li>
-                                <li>
-                                    <h5>Phone Number</h5>
-                                    <p>+01-77-44-48-34</p>
-                                </li>
-                                <li>
-                                    <h5>Skype</h5>
-                                    <p>TheBoxFr</p>
-                                </li>
-                                <li>
-                                    <h5>Address</h5><address>46, Square de la Couronne<br />91120 PALAISEAU</address>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <h3 class="widget-title">Italy</h3>
-                            <ul class="contact-list">
-                                <li>
-                                    <h5>Email</h5><a href="#">it@thebox.com</a>
-                                </li>
-                                <li>
-                                    <h5>Phone Number</h5>
-                                    <p>+09451-52-19-40</p>
-                                </li>
-                                <li>
-                                    <h5>Skype</h5>
-                                    <p>TheBoxIt</p>
-                                </li>
-                                <li>
-                                    <h5>Address</h5><address>Via Francesco Saverio Nitti, 28<br />Roma, 00156</address>
-                                </li>
-                            </ul>
-                        </div>
+                        
+                        
                     </div>
                 </div>
             </div>
