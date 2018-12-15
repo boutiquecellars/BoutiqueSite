@@ -20,6 +20,10 @@
         <servlet-name>Checkout</servlet-name>
         <servlet-class>br.com.itfox.servlet.Checkout</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ContactUs</servlet-name>
+        <servlet-class>br.com.itfox.servlet.ContactUs</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Test</servlet-name>
         <url-pattern>/Test</url-pattern>
@@ -35,6 +39,10 @@
     <servlet-mapping>
         <servlet-name>Checkout</servlet-name>
         <url-pattern>/Checkout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ContactUs</servlet-name>
+        <url-pattern>/ContactUs</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -85,29 +85,9 @@
             <div class="gap gap-small"></div>
             <div class="row" data-gutter="60">
                 <div class="col-md-5">
-                    <h3 class="widget-title">Leave a Message</h3>
-                    <p class="text-muted">Please leave your details and a message if you need further information about our wine selection, payments and returns. </p>
-                    <form action="ContactUs">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input class="form-control" type="text" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>E-mail</label>
-                                    <input class="form-control" type="text" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Message</label>
-                            <textarea class="form-control"></textarea>
-                        </div>
-                        <input class="btn btn-primary" type="submit" value="Send a Message" />
-                    </form>
+                    <h3 class="widget-title">Thank you for your message.</h3>
+                    <p class="text-muted">Boutique Cellars will get in contact shortly </p>
+                    
                 </div>
                 <div class="col-md-7">
                     <div class="row">
@@ -158,44 +138,7 @@
     <script src="js/owl-carousel.js"></script>
     <script src="js/magnific.js"></script>
     <script src="js/custom.js"></script>
-    <script>
-        $( document ).ready(function() {
-            $(".eway-button").hide();
-        });
-        function proceedPayment(){
-            var name = $("#name").val();
-            var email = $("#email").val();
-            var tel = $("#tel").val();
-            
-            var error=0;
-            
-            if(name==null || name.length<3){
-                alert("Please, Fill Name");
-                $("#name").focus();
-                error++;
-            }else if(email==null || email.length<3){
-                alert("Please, Fill Correct Email");
-                $("#email").focus();
-                error++;
-            }else if(tel==null || tel.length<3){
-                alert("Please, Fill Phone");
-                $("#phone").focus();
-                error++;
-            }
-            
-            if(error==0){
-                $("#eway-paynow-button").attr("data-email",email);
-                $("#eway-paynow-button").attr("data-phone",tel);
-                $("#eway-paynow-button").attr("data-cardname","12345678");
-
-
-                $(".eway-button").show();
-                $(".eway-button").click();
-                $(".proceed-payment").hide();
-            }
-        }
-    </script>
-
+    
 
 
 
