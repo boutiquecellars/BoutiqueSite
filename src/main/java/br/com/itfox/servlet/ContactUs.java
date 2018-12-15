@@ -39,9 +39,10 @@ public class ContactUs extends HttpServlet {
         SendHtmlFormatedEmail e = new SendHtmlFormatedEmail();
         System.out.println("contact us....");
         try{
-            if(name!=null && email!=null & message!=null){
+            if(name!=null && name.length()>3 && email!=null && email.length()>10 & message!=null && message.length()>3){
+                System.out.println("sending email ...");
                 e.sendingHtml(message, name, email);
-                String txt = "From <br/>"+
+                String txt = "<br/>From <br/>"+
                              "Name: "+name+"<br/>"+
                              "Email: "+email+"<br/>"+
                              "Message: "+message;

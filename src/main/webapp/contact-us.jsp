@@ -87,26 +87,26 @@
                 <div class="col-md-5">
                     <h3 class="widget-title">Leave a Message</h3>
                     <p class="text-muted">Please leave your details and a message if you need further information about our wine selection, payments and returns. </p>
-                    <form action="ContactUs">
+                    <form action="ContactUs" name="contact" id="contact" method="POST">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input class="form-control" type="text" />
+                                    <input class="form-control" type="text" name="name" id="name" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>E-mail</label>
-                                    <input class="form-control" type="text" />
+                                    <input class="form-control" type="text"  name="email" id="email"/>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Message</label>
-                            <textarea class="form-control"></textarea>
+                            <textarea class="form-control" name="message" id="message"></textarea>
                         </div>
-                        <input class="btn btn-primary" type="submit" value="Send a Message" />
+                        <input class="btn btn-primary" type="button" value="Send a Message" onclick="validateForm()"/>
                     </form>
                 </div>
                 <div class="col-md-7">
@@ -159,13 +159,11 @@
     <script src="js/magnific.js"></script>
     <script src="js/custom.js"></script>
     <script>
-        $( document ).ready(function() {
-            $(".eway-button").hide();
-        });
-        function proceedPayment(){
+        
+        function validateForm(){
             var name = $("#name").val();
             var email = $("#email").val();
-            var tel = $("#tel").val();
+            var msg = $("#message").val();
             
             var error=0;
             
@@ -177,21 +175,14 @@
                 alert("Please, Fill Correct Email");
                 $("#email").focus();
                 error++;
-            }else if(tel==null || tel.length<3){
-                alert("Please, Fill Phone");
-                $("#phone").focus();
+            }else if(msg==null || msg.length<3){
+                alert("Please, Fill the message");
+                $("#message").focus();
                 error++;
             }
             
             if(error==0){
-                $("#eway-paynow-button").attr("data-email",email);
-                $("#eway-paynow-button").attr("data-phone",tel);
-                $("#eway-paynow-button").attr("data-cardname","12345678");
-
-
-                $(".eway-button").show();
-                $(".eway-button").click();
-                $(".proceed-payment").hide();
+                document.forms["contact"].submit();
             }
         }
     </script>

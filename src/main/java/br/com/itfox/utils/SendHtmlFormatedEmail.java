@@ -198,8 +198,10 @@ public class SendHtmlFormatedEmail {
              // send the email
              email.send();
          } catch (EmailException ex) {
+             System.err.println("Erro ano enviar email "+ ex.getMessage());
              Logger.getLogger(SendHtmlFormatedEmail.class.getName()).log(Level.SEVERE, null, ex);
          } catch (UnsupportedEncodingException ex) {
+             System.err.println("Erro ano enviar email "+ ex.getMessage());
              Logger.getLogger(SendHtmlFormatedEmail.class.getName()).log(Level.SEVERE, null, ex);
          }
          /*} catch (MalformedURLException ex) {
