@@ -10,8 +10,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="nav navbar-nav navbar-right navbar-right-no-mar">
-                            <li><a href="about-us.jsp">About Us</a>
-                            </li>
+                           <!-- <li><a href="about-us.jsp">About Us</a>
+                            </li> -->
                             <li><a href="contact-us.jsp">Contact Us</a>
                             </li>
                         </ul>

@@ -22,7 +22,7 @@
                     <div class="col-md-6">
                         <ul class="payment-icons-list">
                             <li>
-                                test
+                                
                                 <img src="img/payment/visa-straight-32px.png" alt="Image Alternative text" title="Pay with Visa" />
                             </li>
                             <li>

@@ -63,12 +63,14 @@
                 <ul class="main-footer-links-list">
                     <%--<li><a href="about-us.jsp">About Us</a>--%>
                     </li>
+                    <!--
                     <li><a href="support-customer-service.jsp">Support & Customer Service</a>
+                    </li> -->
+                    <li><a href="privacy-policy.jsp">Privacy Policy</a>
                     </li>
-                    <li><a href="privacy-policy.jsp">Privacy</a>
-                    </li>
+                    <!-- 
                     <li><a href="terms.jsp">Terms</a>
-                    </li>
+                    </li>-->
                     <li><a href="shipping.jsp">Shipping</a>
                     </li>
                     <li><a href="payments-refunds.jsp">Payments & Refunds</a>
