@@ -37,10 +37,17 @@ public class ContactUs extends HttpServlet {
         int status=0;
         
         SendHtmlFormatedEmail e = new SendHtmlFormatedEmail();
-        
+        System.out.println("contact us....");
         try{
-            e.sendingHtml(message, name, email);
-            status=1;
+            if(name!=null && email!=null & message!=null){
+                e.sendingHtml(message, name, email);
+                String txt = "From <br/>"+
+                             "Name: "+name+"<br/>"+
+                             "Email: "+email+"<br/>"+
+                             "Message: "+message;
+                e.sendingHtml(txt, "Avron", "avron613@gmail.com");
+                status=1;
+            }
            
         }catch(Exception ex){
             ex.printStackTrace();
