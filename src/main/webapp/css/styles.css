@@ -65,7 +65,7 @@ ul.nav.navbar-nav > li > a{
 /** Carousel **/
 img.slider-item-img-right{
     width:auto !important;
-    margin-right: 0px !important;
+    /*margin-right: 0px !important;*/
     top:48% !important;
 }
 /****** <--// ITFOX *******/
