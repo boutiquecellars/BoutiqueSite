@@ -46,7 +46,7 @@ public class ContactUs extends HttpServlet {
                              "Name: "+name+"<br/>"+
                              "Email: "+email+"<br/>"+
                              "Message: "+message;
-                e.sendingHtml(txt, "Avron", "avron613@gmail.com");
+               // e.sendingHtml(txt, "Avron", "avron613@gmail.com");
                 e.sendingHtml(txt, "Avron", "bci.wines@gmail.com");
                 status=1;
             }
