@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/mystyles.css">
     <link rel="stylesheet" href="css/itfoxIndex.css">
+    <!-- include Meta Header -->
+        <jsp:include page="incHeaderMeta.jsp" />
+    <!-- // include Meta Header -->
     <style>
     
 	</style>
