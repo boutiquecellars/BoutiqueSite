@@ -75,6 +75,8 @@
                     </li>
                     <li><a href="payments-refunds.jsp">Payments & Refunds</a>
                     </li>
+                    <li><a href="contact-us.jsp">Contact Us</a>
+                    </li>
                 </ul>
                 <img class="main-footer-img" src="" alt="" title="Image Title" />
             </div>

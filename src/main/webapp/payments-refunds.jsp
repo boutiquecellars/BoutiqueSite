@@ -5,7 +5,7 @@
 <html>
 
 <head>
-    <title>Payments Refunds</title>
+    <title>Payments & Refunds</title>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
     <meta name="keywords" content="Template, html, premium, themeforest" />
@@ -74,12 +74,33 @@
         %>
         <div class="container">
             <header class="page-header">
-                <h1 class="page-title">Refund policy</h1>
+                <h1 class="page-title">Payments & Refunds</h1>
             </header>
             <div class="row">
                 <div class="col-md-9">
                     <p class="gap gap-small">Boutique cellars will gladly refund any orders,</p>
-                    <p class="gap gap-small">To qualify for a refund please arrange for your items to be returned to:?</p>
+                    <p class="gap gap-small">To qualify for a refund please arrange for your items to be returned to:
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3 class="widget-title">Australia</h3>
+                            <ul class="contact-list">
+                                <li>
+                                    <h5>Email</h5><a href="#">Avron613@gmail.com</a>
+                                </li>
+                                <li>
+                                    <h5>Phone Number</h5>
+                                    <p>+61 413 725 449</p>
+                                </li>
+                                
+                                <li>
+                                    <h5>Address</h5><address>500 Victoria Street, Wetherill Park, Sydney NSW 2164, Australia</address>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        
+                    </div>
+                    </p>
                     <p class="gap gap-small">Any shipping costs for return of items are the responsibility of the buyer, and are not covered by Boutique Cellars.
 </p>
                     <p class="gap gap-small">If you have received a shipment with damaged items, please send a photo with details of the order and damaged items to: bci.wines@gmail.com.
