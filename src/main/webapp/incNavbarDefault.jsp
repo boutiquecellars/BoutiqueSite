@@ -797,9 +797,9 @@
                         </li>
                         <li><a href="payments-refunds.jsp" class="navbar-item-top">Payments & Refunds</a>
                         </li>
-                        <!--
-                        <li><a href="#" class="navbar-item-top">Customer Support</a>
-                        </li>-->
+                        
+                        <li><a href="contact-us.jsp" class="navbar-item-top">Contact Us</a>
+                        </li>
                     </ul>
                 </div>
             </div>

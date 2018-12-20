@@ -82,15 +82,9 @@
                     <p class="gap gap-small">To qualify for a refund please arrange for your items to be returned to:
                     <div class="row">
                         <div class="col-md-4">
-                            <h3 class="widget-title">Australia</h3>
+                           
                             <ul class="contact-list">
-                                <li>
-                                    <h5>Email</h5><a href="#">Avron613@gmail.com</a>
-                                </li>
-                                <li>
-                                    <h5>Phone Number</h5>
-                                    <p>+61 413 725 449</p>
-                                </li>
+                                
                                 
                                 <li>
                                     <h5>Address</h5><address>500 Victoria Street, Wetherill Park, Sydney NSW 2164, Australia</address>
